@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import { useState, useEffect } from 'react';
 import Phaser from 'phaser';
-import config from './gameScene';
+import config from './games/flappyBird';
 import * as braincadeSDK from './braincadeSDK';
 
 function App() {

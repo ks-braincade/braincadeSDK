@@ -50,7 +50,7 @@ export class VFXLibrary {
     // Function to create an emitter
     createEmitter(texture, x, y, scaleStart = 0.1, scaleEnd = 0, lifespan = 200) {
         return this.scene.add.particles(x, y, texture, {
-            speed: { min: -100, max: 100 },
+            speed: { min: 100, max: 200 },
             scale: { start: scaleStart, end: scaleEnd },
             blendMode: 'NORMAL',
             lifespan: lifespan,

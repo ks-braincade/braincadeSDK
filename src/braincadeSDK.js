@@ -40,8 +40,13 @@ function handleDestroyGame() {
     this.game.destroy(true, false);
 }
 
-export function initiateGameOver() {
-    window.dispatchEvent(new Event(kGameOver));
+export function initiateGameOver(score = 0, time = 0) {
+    window.dispatchEvent(new CustomEvent(kGameOver, {
+        detail: {
+            score: score,
+            time: time,
+        }
+    }));
 
     this.scene.stop();
     initiateDestroyGame();

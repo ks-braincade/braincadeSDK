@@ -102,6 +102,25 @@ export class VFXLibrary {
             }
         });
     }
+
+    blinkEffect(object, duration = 300, blinks = 3) {
+        this.blinkTween && this.blinkTween.stop();
+        object.setAlpha(0);
+        this.blinkTween = this.scene.tweens.add({
+            targets: object,
+            alpha: 1,
+            duration: duration,
+            yoyo: true,
+            repeat: blinks - 1,
+            ease: 'Power1',
+            onComplete: () => {
+                object.setAlpha(0);
+            },
+            onStop: () => {
+                object.setAlpha(0);
+            }
+        })
+    }
 }
 
 export default VFXLibrary;

@@ -46,7 +46,7 @@ export function initiateGameOver(results) {
     }));
 
     this.scene.stop();
-    initiateDestroyGame();
+    // initiateDestroyGame();
 }
 
 export function initiateResumeGame() {

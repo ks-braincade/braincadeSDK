@@ -45,7 +45,7 @@ export function initiateGameOver(results) {
         detail: results
     }));
 
-    this.scene.stop();
+    this.scene.pause();
     // initiateDestroyGame();
 }
 

@@ -11,10 +11,13 @@ export function addEventListenersPhaser() {
     this.resumeGameHandler = handleResumeGame.bind(this);
     this.restartGameHandler = handleRestartGame.bind(this);
     this.destroyGameHandler = handleDestroyGame.bind(this);
+    this.toggleGameSoundsHandler = handleToggleGameSounds.bind(this);
 
     window.addEventListener(kResumeGame, this.resumeGameHandler);
     window.addEventListener(kRestartGame, this.restartGameHandler);
     window.addEventListener(kDestroyGame, this.destroyGameHandler);
+    window.addEventListener(kToggleGameSounds, this.toggleGameSoundsHandler);
+
 
     this.events.on("destroy", () => {
         removeEventListenersPhaser.bind(this)();
@@ -25,10 +28,15 @@ function removeEventListenersPhaser() {
     window.removeEventListener(kResumeGame, this.resumeGameHandler);
     window.removeEventListener(kRestartGame, this.restartGameHandler);
     window.removeEventListener(kDestroyGame, this.destroyGameHandler);
+    window.removeEventListener(kToggleGameSounds, this.toggleGameSoundsHandler);
 }
 
 function handleResumeGame() {
     this.scene.resume();
+}
+
+function handleToggleGameSounds() {
+    this.sound.setMute(!this.sound.mute);
 }
 
 function handleRestartGame() {
@@ -46,7 +54,6 @@ export function initiateGameOver(results) {
     }));
 
     this.scene.pause();
-    // initiateDestroyGame();
 }
 
 export function initiateResumeGame() {
@@ -59,6 +66,10 @@ export function initiateRestartGame() {
 
 export function initiateDestroyGame() {
     window.dispatchEvent(new Event(kDestroyGame));
+}
+
+export function initiateToggleGameSounds() {
+    window.dispatchEvent(new Event(kToggleGameSounds));
 }
 
 export function handlePauseGame() {
